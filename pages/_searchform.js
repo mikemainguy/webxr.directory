@@ -1,6 +1,6 @@
 import styles from "@/styles/Home.module.css";
 import algoliasearch from "algoliasearch";
-import {Hits, InstantSearch, SearchBox, InfiniteHits} from "react-instantsearch-hooks-web";
+import {InstantSearch, SearchBox, InfiniteHits} from "react-instantsearch-hooks-web";
 
 const searchClient = algoliasearch('4CUN9U9LK4', 'b0b81bbac9caba937a15d691ebe03e19');
 const Hit = ({hit}) => {
