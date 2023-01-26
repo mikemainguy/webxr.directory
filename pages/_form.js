@@ -1,34 +1,41 @@
 import {useState} from "react";
-import styles from "@/styles/Home.module.css";
-import {Button, Popover} from "@mui/material";
+import {Button, Dialog, DialogActions, List, ListItem, TextField} from "@mui/material";
 
 export default function Form() {
 
     const handleClick = (event) => {
         setOpen(true);
     };
+    const handleClose = (event) => {
+        setOpen(false);
+    }
     const [open, setOpen] = useState(false);
-
+    const AddButton = () => {
+        return (
+            <Button id="addButton" onClick={handleClick}>Add New Site</Button>
+        )
+    }
     return (
         <div>
-            <Button id="addButton" onClick={handleClick}>Add Site</Button>
 
-            <Popover id="addPop" open={open}>
-                <form className={styles.inputForm} action="/api/add" method="post">
-                    <label className={styles.inputLabel} htmlFor="url">URL</label>
-                    <input className={styles.input}
-                           type="text"
-                           id="url"
-                           name="url"
-                           required/>
+            <AddButton></AddButton>
+            <Dialog fullWidth maxWidth="lg" id="addPop" open={open}>
+                <form  action="/api/add" method="post">
+                    <List>
 
-                    <label className={styles.inputLabel} htmlFor="description">Description</label>
-                    <textarea className={styles.input}
-                              id="description"
-                              name="description"
-                              required/>
-                    <button className={styles.description} type="submit">Submit</button>
+                        <ListItem><TextField fullwidth id="url" name="url" label="URL" variant="outlined"/></ListItem>
+                        <ListItem><TextField fullwidth id="description" name="description" label="Description" multiline
+                                             minRows={3}
+                                             maxRows={20} variant="outlined"/></ListItem>
+                        <ListItem><TextField fullwidth id="author" name="author" label="author" variant="outlined"/></ListItem>
+                        <ListItem><Button fullWidth type="submit" variant="outlined">Submit</Button></ListItem>
+
+                    </List>
+
                 </form>
-            </Popover>
+                <DialogActions>
+                    <Button onClick={handleClose}>Cancel</Button>
+                </DialogActions>
+            </Dialog>
         </div>)
 }

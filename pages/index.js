@@ -1,14 +1,21 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+
 import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
+
 import SearchForm from "@/pages/_searchform";
 import Form from "@/pages/_form";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 
+const darkTheme = createTheme({
+    palette: {
+        mode: 'dark',
+    },
+});
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -20,18 +27,23 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
+        <ThemeProvider theme={darkTheme}>
+            <CssBaseline enableColorScheme/>
+            <main>
 
-          <Form>
+                <h1 id="header">Web XR Directory</h1>
 
-          </Form>
-        <h1>Web XR Directory</h1>
-        <div>
-          <SearchForm></SearchForm>
-        </div>
+                <Form>
+
+                </Form>
+                <div>
+                    <SearchForm></SearchForm>
+                </div>
 
 
-      </main>
+            </main>
+        </ThemeProvider>
+
     </>
   )
 }

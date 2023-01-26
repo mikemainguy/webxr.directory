@@ -1,22 +1,28 @@
-import styles from "@/styles/Home.module.css";
 import algoliasearch from "algoliasearch";
-import {InstantSearch, SearchBox, InfiniteHits} from "react-instantsearch-hooks-web";
+import {InfiniteHits, InstantSearch, SearchBox} from "react-instantsearch-hooks-web";
+import {Card, CardActions, CardContent, CardHeader, CardMedia, Link} from "@mui/material";
+
 
 const searchClient = algoliasearch('4CUN9U9LK4', 'b0b81bbac9caba937a15d691ebe03e19');
 const Hit = ({hit}) => {
     return (
-        <div className={styles.hit}>
-            <h2 className={styles.hitTitle}>{hit.title}</h2>
+        <Card variant="outlined">
             {hit.image &&
                 <img src="" width="100" height="100"/>
             }
-            <div>
-                <a className={styles.hitLink} href={hit.url}>{hit.url}</a>
-                <p className={styles.description}>{hit.description}</p>
-                <p className={styles.description}>{hit.author}</p>
-            </div>
 
-        </div>
+            <CardHeader title={hit.title}></CardHeader>
+            <CardActions><Link href={hit.url}>{hit.url}</Link></CardActions>
+            <CardContent>
+                <img src="/image.png" width="100" height={100}/>
+                {hit.description}
+                <p>{hit.author}</p>
+            </CardContent>
+
+
+
+
+        </Card>
     )
 }
 export default function SearchForm() {
@@ -25,7 +31,7 @@ export default function SearchForm() {
             <SearchBox>
 
             </SearchBox>
-            <div className={styles.grid}>
+            <div>
                 <InfiniteHits hitComponent={Hit}/>
             </div>
         </InstantSearch>
