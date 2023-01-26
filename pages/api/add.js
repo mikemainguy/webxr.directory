@@ -4,7 +4,7 @@ const crypto=require('crypto');
 
 
 const client = algoliasearch(process.env.ALGOLIA_APP_KEY, process.env.ALGOLIA_ADMIN_KEY);
-const index = client.initIndex('your_index_name');
+const index = client.initIndex('xrdirectory');
 export default function handler(req, res) {
     if (req.method === 'POST') {
         //index.saveObject(req.body);
