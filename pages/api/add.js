@@ -15,7 +15,7 @@ export default function handler(req, res) {
 
         index.saveObject(req.body);
         console.log(JSON.stringify(data));
-        res.redirect('/');
+        res.redirect(303, '/');
     } else {
 
     }
