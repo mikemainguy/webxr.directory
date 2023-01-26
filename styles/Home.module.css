@@ -4,9 +4,18 @@
   justify-content: space-between;
   align-items: center;
   padding: 6rem;
+  font-family: "Arial Black";
   min-height: 100vh;
 }
+.hitTitle {
 
+}
+.hitLink {
+  color: blue;
+}
+.hit {
+  margin: 5%;
+}
 .description {
   display: inherit;
   justify-content: inherit;
@@ -33,6 +42,11 @@
   border: 1px solid rgba(var(--callout-border-rgb), 0.3);
   border-radius: var(--border-radius);
 }
+.hit img {
+
+
+}
+
 
 .code {
   font-weight: 700;
