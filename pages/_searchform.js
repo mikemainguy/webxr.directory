@@ -7,14 +7,15 @@ const searchClient = algoliasearch('4CUN9U9LK4', 'b0b81bbac9caba937a15d691ebe03e
 const Hit = ({hit}) => {
     return (
         <Card variant="outlined">
-            {hit.image &&
-                <img src="" width="100" height="100"/>
-            }
+
 
             <CardHeader title={hit.title}></CardHeader>
             <CardActions><Link href={hit.url}>{hit.url}</Link></CardActions>
             <CardContent>
-                <img src="/image.png" width="100" height={100}/>
+                {hit.image &&
+                    <img src={'https://media.webxr.directory/' + hit.objectID } width="100" height="100"/>
+                }
+
                 {hit.description}
                 <p>{hit.author}</p>
             </CardContent>

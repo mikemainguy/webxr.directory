@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {Button, Dialog, DialogActions, List, ListItem, TextField} from "@mui/material";
 
+
 export default function Form() {
 
     const handleClick = (event) => {
@@ -20,10 +21,11 @@ export default function Form() {
 
             <AddButton></AddButton>
             <Dialog fullWidth maxWidth="lg" id="addPop" open={open}>
-                <form  action="/api/add" method="post">
+                <form  action="/api/add" method="post" enctype="multipart/form-data">
                     <List>
 
                         <ListItem><TextField fullwidth id="url" name="url" label="URL" variant="outlined"/></ListItem>
+                        <ListItem><input type="file" id="image" name="image" label="Preview Image" /></ListItem>
                         <ListItem><TextField fullwidth id="description" name="description" label="Description" multiline
                                              minRows={3}
                                              maxRows={20} variant="outlined"/></ListItem>
